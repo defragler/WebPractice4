@@ -1,0 +1,50 @@
+### Практична робота №4 — Варіант 3
+### REST API: Одяг та взуття
+
+@baseUrl = http://localhost:3000
+@existingId = 1
+
+### 1. GET — отримати всі товари
+GET {{baseUrl}}/clothes
+
+### 2. GET — пошук за назвою
+GET {{baseUrl}}/clothes?search=футболка
+
+### 3. GET — пошук + обмеження кількості
+GET {{baseUrl}}/clothes?search=а&limit=2
+
+### 4. GET — отримати існуючий товар
+GET {{baseUrl}}/clothes/{{existingId}}
+
+### 5. GET — перевірка 404
+GET {{baseUrl}}/clothes/99999
+
+### 6. POST — створення товару
+POST {{baseUrl}}/clothes
+Content-Type: application/json
+
+{
+  "title": "Куртка Urban",
+  "price": 3499,
+  "size": "XL",
+  "material": "Поліестер",
+  "color": "Зелений"
+}
+
+### 7. PATCH — часткове оновлення
+PATCH {{baseUrl}}/clothes/{{existingId}}
+Content-Type: application/json
+
+{
+  "price": 899,
+  "color": "Білий"
+}
+
+### 8. DELETE — видалення
+DELETE {{baseUrl}}/clothes/{{existingId}}
+
+### 9. GET — перевірка, що товар після DELETE відсутній
+GET {{baseUrl}}/clothes/{{existingId}}
+
+### 10. GET — перевірка службових заголовків
+GET {{baseUrl}}/clothes
